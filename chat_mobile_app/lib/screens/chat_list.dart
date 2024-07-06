@@ -1,5 +1,8 @@
-import 'package:chat_app/chat.dart';
+import 'package:chat_app/datas/chat.dart';
+import 'package:chat_app/datas/story.dart';
+import 'package:chat_app/screens/chat.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class ChatListScreen extends StatefulWidget {
   @override
@@ -7,49 +10,6 @@ class ChatListScreen extends StatefulWidget {
 }
 
 class _ChatListScreenState extends State<ChatListScreen> {
-  final List<Story> stories = [
-    Story(name: "Your story", imageUrl: "assets/images/1.jpg"),
-    Story(name: "Maria Ford", imageUrl: "assets/images/2.jpg"),
-    Story(name: "CNN", imageUrl: "assets/images/3.jpg"),
-    Story(name: "KOKOU Amah", imageUrl: "assets/images/4.jpg"),
-    Story(name: "AYEDAM Abalawoè", imageUrl: "assets/images/5.jpg"),
-    Story(name: "TAN Doe", imageUrl: "assets/images/6.jpg"),
-  ];
-
-  final List<Chat> chats = [
-    Chat(
-        name: "Evelyn Foster",
-        message: "Just finished a workout and feeling great!",
-        time: "15:47",
-        imageUrl: "assets/images/4.jpg",
-        isRead: true),
-    Chat(
-        name: "Tom Mitchell",
-        message: "Not yet, but I've made significant progress.",
-        time: "13:02",
-        imageUrl: "assets/images/5.jpg",
-        isRead: false,
-        unreadCount: 3),
-    Chat(
-        name: "Jackie Washington",
-        message: "Just finished a workout and feeling great!",
-        time: "13:02",
-        imageUrl: "assets/images/1.jpg",
-        isRead: false),
-    Chat(
-        name: "New York Times",
-        message: "Dortmund try to outrun reality before...",
-        time: "Yesterday",
-        imageUrl: "assets/images/2.jpg",
-        isRead: false,
-        unreadCount: 9),
-    Chat(
-        name: "Mattie Moore",
-        message: "You: Not yet, but I've heard it's a really...",
-        time: "28 May",
-        imageUrl: "assets/images/3.jpg",
-        isRead: true),
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,6 +25,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
                   style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
+                    color: Colors.white
                   ),
                 ),
                 Row(
@@ -128,7 +89,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 16.0, vertical: 8.0),
                   decoration: BoxDecoration(
-                    color: Colors.amber,
+                    color: Color(0xFFFCAc34),
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: const Text(
@@ -198,65 +159,79 @@ class _ChatListScreenState extends State<ChatListScreen> {
                 final chat = chats[index];
                 return GestureDetector(
                   onTap: () => {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ChatScreen()))
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ChatScreen(chat: chat)))
                   },
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      radius: 25.0,
-                      backgroundImage: AssetImage(chat.imageUrl),
-                    ),
-                    title: Text(
-                      chat.name,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                  child: Slidable(
+                    endActionPane:
+                        ActionPane(motion: const BehindMotion(), extentRatio: 0.2,  children: [
+                      SlidableAction(
+                          onPressed: (context) {},
+                          backgroundColor: Colors.red,
+                          icon: Icons.delete_outlined,
+                          borderRadius: BorderRadius.circular(20),
+                          padding: const EdgeInsets.all(1),
+                          spacing: 1.0)
+                    ]),
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        radius: 25.0,
+                        backgroundImage: AssetImage(chat.imageUrl),
                       ),
-                    ),
-                    subtitle: Text(
-                      chat.message,
-                      style: TextStyle(
-                        color: chat.isRead ? Colors.grey : Colors.white,
+                      title: Text(
+                        chat.name,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                    trailing: SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            chat.time,
-                            style: const TextStyle(
-                              color: Colors.grey,
-                              fontSize: 12.0,
+                      subtitle: Text(
+                        chat.message,
+                        style: TextStyle(
+                          color: chat.isRead ? Colors.grey : Colors.white,
+                        ),
+                      ),
+                      trailing: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              chat.time,
+                              style: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12.0,
+                              ),
                             ),
-                          ),
-                          chat.unreadCount != null
-                              ? Container(
-                                  margin: const EdgeInsets.only(top: 4.0),
-                                  padding: const EdgeInsets.all(6.0),
-                                  decoration: const BoxDecoration(
-                                    color: Colors.red,
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Text(
-                                    chat.unreadCount.toString(),
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12.0,
+                            chat.unreadCount != null
+                                ? Container(
+                                    margin: const EdgeInsets.only(top: 4.0),
+                                    padding: const EdgeInsets.all(6.0),
+                                    decoration: const BoxDecoration(
+                                      color: Colors.red,
+                                      shape: BoxShape.circle,
                                     ),
-                                  ),
-                                )
-                              : Container(
-                                  margin: const EdgeInsets.only(top: 4.0),
-                                  padding: const EdgeInsets.all(6.0),
-                                  child: const Icon(
-                                    Icons.done_all,
-                                    color: Colors.amber,
-                                  ),
-                                )
-                        ],
+                                    child: Text(
+                                      chat.unreadCount.toString(),
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12.0,
+                                      ),
+                                    ),
+                                  )
+                                : Container(
+                                    margin: const EdgeInsets.only(top: 4.0),
+                                    padding: const EdgeInsets.all(6.0),
+                                    child: const Icon(
+                                      Icons.done_all,
+                                      color: Color(0xFFFCAc34),
+                                    ),
+                                  )
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -269,7 +244,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color(0xFF1C1C1E),
         unselectedItemColor: Colors.grey,
-        selectedItemColor: Colors.amber,
+        selectedItemColor: Color(0xFFFCAc34),
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
@@ -292,28 +267,4 @@ class _ChatListScreenState extends State<ChatListScreen> {
       ),
     );
   }
-}
-
-class Story {
-  final String name;
-  final String imageUrl;
-
-  Story({required this.name, required this.imageUrl});
-}
-
-class Chat {
-  final String name;
-  final String message;
-  final String time;
-  final String imageUrl;
-  final bool isRead;
-  final int? unreadCount;
-
-  Chat(
-      {required this.name,
-      required this.message,
-      required this.time,
-      required this.imageUrl,
-      required this.isRead,
-      this.unreadCount});
 }

@@ -1,6 +1,6 @@
-import 'package:chat_app/chat_list.dart';
-import 'package:chat_app/set_pin.dart';
+import 'package:chat_app/screens/set_pin.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,11 +16,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
-        primaryColor: Colors.amber,
-        scaffoldBackgroundColor: const Color(0xFF1C1C1E),
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(color: Colors.white),
-        ),
+        primaryColor: const Color(0xFFFCAc34),
+        scaffoldBackgroundColor: const Color(0xFF0C0C0C),
+       textTheme: GoogleFonts.onestTextTheme(),
       ),
       debugShowCheckedModeBanner: false,
       home: SetPinScreen(),
