@@ -18,7 +18,7 @@ Here are some previews of the designs I've recreated:
 ## Projects
 
 1. **Chat Mobile App Design Concept**
-   - Original Design by: [Hafid Asya'ri](https://dribbble.com/ronasit)
+   - Original Design by: [Ronas IT | UI/UX Team](https://dribbble.com/ronasit)
    - [Repository](./chat_mobile_app)
    
 
