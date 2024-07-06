@@ -6,9 +6,9 @@ This project is a Flutter implementation of a chat mobile app design concept ins
 
 Here are some screenshots of the application:
 
-![Screenshot 1](./assets/screenshots/1.png)
-![Screenshot 2](./assets/screenshots/2.png)
-![Screenshot 3](./assets/screenshots/3.png)
+![Screenshot 1](./assets/screenshots/1.jpg)
+![Screenshot 2](./assets/screenshots/2.jpg)
+![Screenshot 3](./assets/screenshots/3.jpg)
 
 ## Features
 

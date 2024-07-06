@@ -8,9 +8,9 @@ Here are some previews of the designs I've recreated:
 
 ### Chat Mobile App Design Concept
 
-![Chat App Screenshot 1](./chat_mobile_app/assets/screenshots/1.png)
-![Chat App Screenshot 2](./chat_mobile_app/assets/screenshots/2.png)
-![Chat App Screenshot 3](./chat_mobile_app/assets/screenshots/3.png)
+![Chat App Screenshot 1](./chat_mobile_app/assets/screenshots/1.jpg)
+![Chat App Screenshot 2](./chat_mobile_app/assets/screenshots/2.jpg)
+![Chat App Screenshot 3](./chat_mobile_app/assets/screenshots/3.jpg)
 
 *Original design by [Ronas IT | UI/UX Team](https://dribbble.com/ronasit)*
 
@@ -18,8 +18,7 @@ Here are some previews of the designs I've recreated:
 ## Projects
 
 1. **Chat Mobile App Design Concept**
-   - Original Design by: [Hafid Asya'ri](https://dribbble.com/HafidAsyari)
-   - [Preview](./chat_mobile_app)
+   - Original Design by: [Hafid Asya'ri](https://dribbble.com/ronasit)
    - [Repository](./chat_mobile_app)
    
 
